@@ -1,6 +1,7 @@
 import { defineConfig, passthroughImageService } from 'astro/config';
-
 import cloudflare from '@astrojs/cloudflare';
+
+import lit from '@astrojs/lit';
 
 // https://astro.build/config
 export default defineConfig({
@@ -8,5 +9,11 @@ export default defineConfig({
   adapter: cloudflare(),
   image: {
     service: passthroughImageService(),
+  },
+  integrations: [lit()],
+  vite: {
+    ssr: {
+      external: 'lit/decorators.js',
+    },
   },
 });

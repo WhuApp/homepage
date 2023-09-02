@@ -11,7 +11,13 @@
   },
   "dependencies": {
     "@astrojs/cloudflare": "^7.0.0",
-    "astro": "^3.0.4"
+    "@astrojs/lit": "^3.0.0",
+    "@nanostores/lit": "^0.1.5",
+    "@nanostores/persistent": "^0.9.1",
+    "@webcomponents/template-shadowroot": "^0.2.1",
+    "astro": "^3.0.4",
+    "lit": "^2.8.0",
+    "nanostores": "^0.9.3"
   },
   "devDependencies": {
     "prettier": "^3.0.3",
