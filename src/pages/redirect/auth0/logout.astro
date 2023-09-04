@@ -1,7 +1,3 @@
----
-import { AuthCode } from '../../../components/auth-code';
----
-
 <!doctype html>
 <html lang='en'>
   <head>
@@ -20,7 +16,8 @@ import { AuthCode } from '../../../components/auth-code';
   </head>
   <body>
     <p>Redirecting</p>
-
-    <AuthCode client:load client:only />
   </body>
+  <script>
+    window.location.replace(ROOT);
+  </script>
 </html>
