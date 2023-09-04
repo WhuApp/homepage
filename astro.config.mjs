@@ -16,9 +16,4 @@ export default defineConfig({
       external: 'lit/decorators.js',
     },
   },
-  server: {
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-    },
-  },
 });
