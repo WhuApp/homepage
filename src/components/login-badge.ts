@@ -3,7 +3,6 @@ import { customElement } from 'lit/decorators.js';
 import { loginFlow, logoutFlow } from '../auth0';
 import { auth0Token } from '../stores/tokenStore';
 import { StoreController } from '@nanostores/lit';
-import { until } from 'lit-html/directives/until.js';
 
 @customElement('login-badge')
 export class LoginBadge extends LitElement {
@@ -11,10 +10,9 @@ export class LoginBadge extends LitElement {
 
   render() {
     if (this.authCodeController.value) {
-      return html`<a href=${logoutFlow()}> Log out </a>`;
+      return html`<button @click="${logoutFlow}">Log out</button>`;
     } else {
-      const loginLink = loginFlow().then((response) => html`<a href=${response}> Log in </a>`);
-      return html`${until(loginLink, 'Loading...')}`;
+      return html`<button @click="${loginFlow}">Log in</button>`;
     }
   }
 }

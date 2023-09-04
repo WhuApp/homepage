@@ -7,27 +7,25 @@ const clientId: string = 'LVuz7aq6FbmSk7Gc1MWiOVkHvHs7SDTW';
 const callBackUrl: string = `${ROOT}/redirect/auth0/callback`;
 const logOutUrl: string = `${ROOT}/redirect/auth0/logout`;
 const audience: string = `${url}/api/v2/`;
-const loginScopes: string = '';
 
-export const loginFlow = async (): Promise<string> => {
+export const loginFlow = () => {
   const id = makeid(8);
 
   localStorage.setItem('auth0State', id);
 
-  return (
+  window.location.replace(
     `${url}/authorize?` +
-    `audience=${audience}&` +
-    `scope=${loginScopes}&` +
-    `response_type=code&` +
-    `client_id=${clientId}&` +
-    `redirect_uri=${callBackUrl}&` +
-    `state=${id}&`
+      `audience=${audience}&` +
+      `response_type=code&` +
+      `client_id=${clientId}&` +
+      `redirect_uri=${callBackUrl}&` +
+      `state=${id}`
   );
 };
 
-export const logoutFlow = (): string => {
+export const logoutFlow = () => {
   auth0Token.set('');
-  return `${url}/v2/logout?` + `client_id=${clientId}&` + `returnTo=${logOutUrl}`;
+  window.location.replace(`${url}/v2/logout?` + `client_id=${clientId}&` + `returnTo=${logOutUrl}`);
 };
 
 export type Auth0TokenResponse = {
@@ -49,10 +47,11 @@ export const fetchToken = async (code: string, secret: string): Promise<FetchTok
       redirect_uri: callBackUrl,
     }),
   });
+  const response = await auth0Response.json();
 
-  console.log(auth0Response);
+  console.log(response);
 
-  return await auth0Response.json();
+  return await response;
 };
 
 const makeid = (length: number) => {
