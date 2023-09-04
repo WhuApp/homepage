@@ -14,6 +14,10 @@ export default defineConfig({
   vite: {
     ssr: {
       external: 'lit/decorators.js',
+      noExternal: ['@lit/reactive-element', 'lit-html', 'lit'],
+    },
+    resolve: {
+      conditions: ['node'],
     },
   },
 });
