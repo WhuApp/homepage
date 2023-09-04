@@ -1,4 +1,4 @@
-import type { APIRoute } from 'astro';
+/*import type { APIRoute } from 'astro';
 import { fetchToken } from '../../../auth0';
 
 export const POST: APIRoute = async ({ request, locals }): Promise<Response> => {
@@ -18,3 +18,4 @@ export const POST: APIRoute = async ({ request, locals }): Promise<Response> => 
   const fetchResponse = await fetchToken(code, secret);
   return new Response(JSON.stringify(fetchResponse), { status: fetchResponse.error ? 400 : 200 });
 };
+*/
