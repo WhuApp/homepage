@@ -11,9 +11,7 @@ function AuthCode() {
       const urlState = urlParams.get('state');
       const localState = localStorage.getItem('auth0State');
 
-      if (localState !== urlState) {
-        window.location.replace(ROOT);
-      } else if (!code) {
+      if (localState !== urlState || !code) {
         window.location.replace(ROOT);
       } else {
         const response = await fetch(`${ROOT}/endpoint/auth0/token.json`, {
