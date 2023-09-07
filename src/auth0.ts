@@ -1,6 +1,8 @@
 import { auth0Token } from './stores/tokenStore';
 
-export const ROOT = import.meta.env.DEV ? 'http://localhost:4321' : 'https://whu.app';
+export const ROOT = import.meta.env.DEV
+  ? 'http://localhost:4321'
+  : 'https://feature-login.whu-homepage-astro.pages.dev';
 
 const url: string = 'https://whuapp.eu.auth0.com';
 const clientId: string = 'LVuz7aq6FbmSk7Gc1MWiOVkHvHs7SDTW';
