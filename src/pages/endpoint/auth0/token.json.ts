@@ -1,15 +1,10 @@
 import type { APIRoute } from 'astro';
 import { fetchToken } from '../../../auth0';
 
-export const POST: APIRoute = async ({ request, locals }): Promise<Response> => {
+export const POST: APIRoute = async ({ request }): Promise<Response> => {
   const body = await request.json();
   const code = body.code;
-  let secret;
-  if (import.meta.env.DEV) {
-    secret = import.meta.env.AUTH0_SECRET;
-  } else {
-    secret = (locals as any).AUTH0_SECRET;
-  }
+  const secret = import.meta.env.AUTH0_SECRET;
 
   if (!code) {
     return new Response('No code provided', { status: 400 });

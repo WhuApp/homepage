@@ -49,8 +49,6 @@ export const fetchToken = async (code: string, secret: string): Promise<FetchTok
   });
   const response = await auth0Response.json();
 
-  console.log(response);
-
   return await response;
 };
 
