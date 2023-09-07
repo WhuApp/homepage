@@ -1,0 +1,26 @@
+---
+import AuthCode from '../../../components/auth-code';
+---
+
+<!doctype html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='description' content='Astro description' />
+    <meta name='viewport' content='width=device-width' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <meta name='generator' content={Astro.generator} />
+    <title>Callback</title>
+    <style>
+      html {
+        background-color: black;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Redirecting</p>
+
+    <AuthCode client:load client:only='react' />
+  </body>
+</html>

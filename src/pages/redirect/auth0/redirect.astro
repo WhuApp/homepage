@@ -1,0 +1,28 @@
+---
+import { loginFlow } from '../../../auth0';
+---
+
+<!doctype html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='description' content='Astro description' />
+    <meta name='viewport' content='width=device-width' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <meta name='generator' content={Astro.generator} />
+    <title>Redirect</title>
+    <style>
+      html {
+        background-color: black;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Redirecting</p>
+    <script is:inline>
+      window.location.replace(loginFlow());
+    </script>
+  </body>
+</html>
+ ../../../auth0
