@@ -1,6 +1,6 @@
 import { auth0Token } from './stores/tokenStore';
 
-export const ROOT = import.meta.env.DEV ? 'http://localhost:4321' : import.meta.env.ROOT;
+export const ROOT = import.meta.env.DEV ? 'http://localhost:4321' : import.meta.env.PUBLIC_ROOT;
 
 const url: string = 'https://whuapp.eu.auth0.com';
 const clientId: string = 'LVuz7aq6FbmSk7Gc1MWiOVkHvHs7SDTW';
