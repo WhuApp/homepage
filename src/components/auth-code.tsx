@@ -1,5 +1,5 @@
 import { auth0Token } from '../stores/tokenStore';
-import { ROOT, type AuthToken, type FetchTokenResponse } from '../auth0';
+import { ROOT, type AuthToken } from '../auth0';
 import { useEffect } from 'react';
 
 function AuthCode() {
