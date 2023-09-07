@@ -1,10 +1,10 @@
 ---
+import LoginBadge from '../components/login-badge';
 interface Props {
   title: string;
 }
 
 const { title } = Astro.props;
-import { LoginBadge } from '../components/login-badge';
 ---
 
 <!doctype html>
@@ -18,7 +18,7 @@ import { LoginBadge } from '../components/login-badge';
     <title>{title}</title>
   </head>
   <body>
-    <LoginBadge client:load client:only />
+    <LoginBadge client:load client:only='react' />
     <slot />
   </body>
 </html>

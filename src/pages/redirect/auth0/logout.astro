@@ -1,3 +1,7 @@
+---
+import { ROOT } from '../../../auth0';
+---
+
 <!doctype html>
 <html lang='en'>
   <head>
@@ -17,7 +21,7 @@
   <body>
     <p>Redirecting</p>
   </body>
-  <script>
+  <script define:vars={{ ROOT }}>
     window.location.replace(ROOT);
   </script>
 </html>

@@ -11,13 +11,15 @@
   },
   "dependencies": {
     "@astrojs/cloudflare": "^7.0.0",
-    "@astrojs/lit": "^3.0.0",
-    "@nanostores/lit": "^0.1.5",
+    "@astrojs/react": "^3.0.1",
     "@nanostores/persistent": "^0.9.1",
-    "@webcomponents/template-shadowroot": "^0.2.1",
+    "@nanostores/react": "^0.7.1",
+    "@types/react": "^18.2.21",
+    "@types/react-dom": "^18.2.7",
     "astro": "^3.0.4",
-    "lit": "^2.8.0",
-    "nanostores": "^0.9.3"
+    "nanostores": "^0.9.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "prettier": "^3.0.3",

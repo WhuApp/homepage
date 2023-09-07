@@ -1,5 +1,5 @@
 ---
-import { AuthCode } from '../../../components/auth-code';
+import AuthCode from '../../../components/auth-code';
 ---
 
 <!doctype html>
@@ -21,6 +21,6 @@ import { AuthCode } from '../../../components/auth-code';
   <body>
     <p>Redirecting</p>
 
-    <AuthCode client:load client:only />
+    <AuthCode client:load client:only='react' />
   </body>
 </html>
