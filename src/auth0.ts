@@ -1,6 +1,6 @@
 import { auth0Token } from './stores/tokenStore';
 
-export const ROOT = import.meta.env.DEV ? 'http://localhost:4321' : 'https://whu.app';
+export const ROOT = import.meta.env.DEV ? 'http://localhost:4321' : import.meta.env.ROOT;
 
 const url: string = 'https://whuapp.eu.auth0.com';
 const clientId: string = 'LVuz7aq6FbmSk7Gc1MWiOVkHvHs7SDTW';
@@ -39,12 +39,17 @@ export type AuthToken = {
   token_type: string;
 };
 
-export type Error = {
+export type AuthError = {
   error: string;
   error_description: string;
 };
 
-export type FetchTokenResponse = Error | AuthToken;
+export function isAuthError(response: FetchTokenResponse): response is AuthError {
+  const error = response as AuthError;
+  return error.error !== undefined && error.error_description !== undefined;
+}
+
+export type FetchTokenResponse = AuthError | AuthToken;
 
 export const fetchToken = async (code: string, secret: string): Promise<FetchTokenResponse> => {
   const auth0Response = await fetch(`${url}/oauth/token`, {
