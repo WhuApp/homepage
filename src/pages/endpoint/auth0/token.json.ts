@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { fetchToken, type Error } from '../../../auth0';
+import { fetchToken, isAuthError } from '../../../auth0';
 
 export const POST: APIRoute = async ({ request }): Promise<Response> => {
   const code = await request.text();
@@ -9,9 +9,9 @@ export const POST: APIRoute = async ({ request }): Promise<Response> => {
     return new Response('No code provided', { status: 400 });
   }
 
-  const fetchResponse = await fetchToken(code, secret);
+  const response = await fetchToken(code, secret);
 
-  return new Response(JSON.stringify(fetchResponse), {
-    status: fetchResponse instanceof Error ? 400 : 200,
+  return new Response(JSON.stringify(response), {
+    status: isAuthError(response) ? 400 : 200,
   });
 };
