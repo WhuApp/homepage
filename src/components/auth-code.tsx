@@ -31,7 +31,6 @@ function AuthCode() {
         const token = tokenResponse.access_token;
 
         console.log(tokenResponse);
-
         if (!token) {
           auth0Token.set('');
         } else {

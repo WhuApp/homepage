@@ -11,6 +11,8 @@ export const POST: APIRoute = async ({ request, locals }): Promise<Response> => 
     secret = (locals as any).AUTH0_SECRET;
   }
 
+  console.log(secret);
+
   if (!code) {
     return new Response('No code provided', { status: 400 });
   }
