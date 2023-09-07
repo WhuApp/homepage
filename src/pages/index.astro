@@ -1,11 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Token from '../components/token';
 ---
 
 <Layout title='Welcome to Whu.'>
   <main>
     <h1>Welcome to <span class='text-gradient'>Whu</span></h1>
     <p class='instructions'>This site is currently under construction 🚧</p>
+    <Token client:load client:only='react' />
   </main>
 </Layout>
 

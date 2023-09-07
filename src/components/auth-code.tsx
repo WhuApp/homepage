@@ -1,38 +1,30 @@
 import { auth0Token } from '../stores/tokenStore';
-import { ROOT, type Auth0TokenResponse } from '../auth0';
+import { ROOT, type AuthToken, type FetchTokenResponse } from '../auth0';
 import { useEffect } from 'react';
 
 function AuthCode() {
   useEffect(() => {
     (async () => {
-      const queryString = window.location.search;
-      const urlParams = new URLSearchParams(queryString);
+      const urlParams = new URLSearchParams(window.location.search);
       const code = urlParams.get('code');
       const urlState = urlParams.get('state');
       const localState = localStorage.getItem('auth0State');
 
-      if (localState !== urlState || !code) {
-        window.location.replace(ROOT);
-      } else {
+      if (localState == urlState && code) {
         const response = await fetch(`${ROOT}/endpoint/auth0/token.json`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            code: code,
-          }),
+          body: code,
         });
 
-        const tokenResponse: Auth0TokenResponse = await response.json();
-        const token = tokenResponse.access_token;
-
-        if (!token) {
-          auth0Token.set('');
+        if (response.status === 200) {
+          const authToken: AuthToken = await response.json();
+          auth0Token.set(JSON.stringify(authToken));
         } else {
-          auth0Token.set(token);
+          auth0Token.set('');
         }
-
-        window.location.replace(ROOT);
       }
+      window.location.replace(ROOT);
     })();
   }, []);
 

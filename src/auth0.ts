@@ -7,6 +7,7 @@ const clientId: string = 'LVuz7aq6FbmSk7Gc1MWiOVkHvHs7SDTW';
 const callBackUrl: string = `${ROOT}/redirect/auth0/callback`;
 const logOutUrl: string = `${ROOT}/redirect/auth0/logout`;
 const audience: string = `${url}/api/v2/`;
+const scope: string = `openid offline_access`;
 
 export const loginFlow = () => {
   const id = makeid(8);
@@ -17,6 +18,7 @@ export const loginFlow = () => {
     `${url}/authorize?` +
       `audience=${audience}&` +
       `response_type=code&` +
+      `scope=${scope}&` +
       `client_id=${clientId}&` +
       `redirect_uri=${callBackUrl}&` +
       `state=${id}`
@@ -28,12 +30,21 @@ export const logoutFlow = () => {
   window.location.replace(`${url}/v2/logout?` + `client_id=${clientId}&` + `returnTo=${logOutUrl}`);
 };
 
-export type Auth0TokenResponse = {
-  token_type: string;
+export type AuthToken = {
   access_token: string;
+  refresh_token: string;
+  id_token: string;
+  scope: string;
+  expires_in: number;
+  token_type: string;
 };
 
-type FetchTokenResponse = { error?: string; auth0TokenResponse?: Auth0TokenResponse };
+export type Error = {
+  error: string;
+  error_description: string;
+};
+
+export type FetchTokenResponse = Error | AuthToken;
 
 export const fetchToken = async (code: string, secret: string): Promise<FetchTokenResponse> => {
   const auth0Response = await fetch(`${url}/oauth/token`, {
