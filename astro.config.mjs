@@ -13,9 +13,4 @@ export default defineConfig({
     service: passthroughImageService(),
   },
   integrations: [react()],
-  server: {
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-    },
-  },
 });
