@@ -15,7 +15,7 @@ export default defineConfig({
   integrations: [react()],
   server: {
     headers: {
-      'Access-Control-Allow-Origin': 'https://api.whu.app',
+      'Access-Control-Allow-Origin': '*',
     },
   },
 });
