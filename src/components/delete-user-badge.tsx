@@ -35,7 +35,7 @@ const deleteOwnUser = async (authToken: AuthToken): Promise<string> => {
     headers: { Authorization: 'Bearer ' + authToken.id_token },
   });
 
-  if (response.status === 200) {
+  if (response.status === 204) {
     logoutFlow();
     return 'Successfully deleted';
   }
