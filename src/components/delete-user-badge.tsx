@@ -30,7 +30,7 @@ function DeleteUserBadge() {
 }
 
 const deleteOwnUser = async (authToken: AuthToken): Promise<string> => {
-  const response = await fetch(BASE_URL + 'delete/me', {
+  const response = await fetch(BASE_URL + 'me', {
     method: 'DELETE',
     headers: { Authorization: 'Bearer ' + authToken.id_token },
   });
