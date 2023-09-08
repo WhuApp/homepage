@@ -1,11 +1,12 @@
 ---
+import DeleteUserBadge from '../../components/delete-user-badge';
 import Layout from '../../layouts/Layout.astro';
 ---
 
 <Layout title='Delete account.'>
   <main>
     <h1>Delete your <span class='text-gradient'>Whu</span> account here</h1>
-    <button> Delete 🚧</button>
+    <DeleteUserBadge client:load client:only='react' />
   </main>
 </Layout>
 
