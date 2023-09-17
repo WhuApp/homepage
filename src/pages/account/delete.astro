@@ -1,60 +1,13 @@
 ---
-import DeleteUserBadge from '../../components/delete-user-badge';
+import DeleteUserBadge from '@/components/delete-user-badge';
 import Layout from '../../layouts/Layout.astro';
 ---
 
 <Layout title='Delete account.'>
-  <main>
-    <h1>Delete your <span class='text-gradient'>Whu</span> account here</h1>
-    <DeleteUserBadge client:load client:only='react' />
+  <main class='w-full flex justify-center'>
+    <div class='flex flex-col gap-4'>
+      <h1>Delete your <span class='text-gradient'>Whu</span> account here</h1>
+      <DeleteUserBadge client:load client:only='react' />
+    </div>
   </main>
 </Layout>
-
-<style>
-  main {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    margin: auto;
-    padding: 1rem;
-    width: 800px;
-    max-width: calc(100% - 2rem);
-    color: white;
-    font-size: 20px;
-    line-height: 1.6;
-  }
-  h1 {
-    font-size: 4rem;
-    font-weight: 700;
-    line-height: 1;
-    text-align: center;
-    margin-bottom: 1em;
-  }
-  button {
-    transition: background 1s;
-    font-size: 2rem;
-    font-weight: 400;
-    line-height: 1;
-    color: white;
-    text-align: center;
-    margin-bottom: 1em;
-    background-color: gray;
-  }
-  button:hover {
-    background-color: darkgray;
-  }
-  .text-gradient {
-    background-image: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 400%;
-    background-position: 0%;
-  }
-  .instructions {
-    margin-bottom: 2rem;
-    border: 1px solid rgba(var(--accent-light), 25%);
-    background: linear-gradient(rgba(var(--accent-dark), 66%), rgba(var(--accent-dark), 33%));
-    padding: 1.5rem;
-    border-radius: 8px;
-  }
-</style>
