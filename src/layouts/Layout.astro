@@ -1,5 +1,7 @@
 ---
-import LoginBadge from '../components/login-badge';
+import LoginBadge from '@/components/login-badge';
+import '@/styles/globals.css';
+
 interface Props {
   title: string;
 }
@@ -17,26 +19,11 @@ const { title } = Astro.props;
     <meta name='generator' content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body>
-    <LoginBadge client:load client:only='react' />
+  <body class='dark min-h-screen'>
+    <div class='flex justify-between flex-row px-16 py-8 w-full'>
+      <h1 class='font-bold text-primary'>Whu</h1>
+      <LoginBadge client:load client:only='react' />
+    </div>
     <slot />
   </body>
 </html>
-<style is:global>
-  :root {
-    --accent: 136, 58, 234;
-    --accent-light: 224, 204, 250;
-    --accent-dark: 49, 10, 101;
-    --accent-gradient: linear-gradient(
-      45deg,
-      rgb(var(--accent)),
-      rgb(var(--accent-light)) 30%,
-      white 60%
-    );
-  }
-  html {
-    font-family: system-ui, sans-serif;
-    background: #13151a;
-    background-size: 224px;
-  }
-</style>
